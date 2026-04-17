@@ -9,7 +9,7 @@ This just a clone of the original mobile todoist app.
 
 ## Data Flow Diagrams (DFD)
 ### Level 0:
-<img src="images\Level0_DFD.png" width="500">
+<img src="images\Level0_DFD.png" width="700">
 
 ### Level 1:
-<img src="images\Level1_DFD.png" width="500">
+<img src="images\Level1_DFD.png" width="700">
