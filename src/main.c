@@ -2,11 +2,12 @@
  * This is the initial code for the program
  */
 
-#include <stdio.h>
+// #include <stdio.h>
+#include "../include/utility.h"
 
 int main(int argc, char *argv[]) {
-  if (argc < 2) {
-    fprintf(stderr, "\nERROR: Wrong argument count...\n");
+  if (argc == 1) {
+    usage();
   }
 
   /*
