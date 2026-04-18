@@ -1,2 +1,3 @@
 .clangd
 documents/TODO.md
+*.exe
