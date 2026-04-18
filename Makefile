@@ -3,7 +3,7 @@ SHELL:= cmd.exe
 CC=gcc
 CFLAGS=-Wall -Wextra -g
 SRCS=$(wildcard src/*.c)
-OUT=todoist.exe
+OUT=todo.exe
 TEST=tests\test.ps1
 
 all: build

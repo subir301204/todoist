@@ -1,4 +1,4 @@
-$exe = Join-Path $PSScriptRoot "..\todoist.exe"
+$exe = Join-Path $PSScriptRoot "..\todo.exe"
 
 # -----------------------
 # Test 1: Basic argument count
