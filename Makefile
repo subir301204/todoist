@@ -14,6 +14,10 @@ build:
 test: build
 	powershell -ExecutionPolicy Bypass -File $(TEST)
 
+install: build
+	if not exist C:\tools mkdir C:\tools
+	xcopy /Y $(OUT) C:\tools\
+
 clean:
 	del /Q $(OUT)
 
