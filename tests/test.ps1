@@ -4,7 +4,7 @@ $exe = Join-Path $PSScriptRoot "..\todo.exe"
 # Test 1: Basic argument count
 # -----------------------
 $output1 = & $exe 2>&1
-if ($output1 -match "ERROR") {
+if ($output1 -match "USAGE") {
     Write-Host "PASS test 1 - Basic argument count"
 }
 else {
