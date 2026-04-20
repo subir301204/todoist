@@ -1,4 +1,4 @@
-# This is the DEecision Log for ths project
+# This is the Decision Log for the project
 Here I will document why I took each decision
 
 ---
@@ -9,7 +9,7 @@ Here I will document why I took each decision
 - Creation of a test script
 - Add install command in the Make file
 - Update the exe file name to 'todo'
-- Create the utility userdefine header
+- Create the utility user-define header
 - Create the usage function
 
 ### Why this decision?
