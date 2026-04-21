@@ -33,3 +33,8 @@ void list_tasks() {
 void mark_complete(int id) {
   update_task(id);
 }
+
+// Function to delete a task from the data file
+void delete_task(int id) {
+  delete_task_file(id);
+}
