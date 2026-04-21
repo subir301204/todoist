@@ -28,3 +28,8 @@ void add_tasks() {
 void list_tasks() {
   read_all_tasks();   // File operation function
 }
+
+// Function to mark a task as complete
+void mark_complete(int id) {
+  update_task(id);
+}
