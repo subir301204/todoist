@@ -23,3 +23,8 @@ void add_tasks() {
   write_task(t);
   printf("\nTask added successfully!\n");
 }
+
+// Function to list all the task in the file
+void list_tasks() {
+  read_all_tasks();   // File operation function
+}
