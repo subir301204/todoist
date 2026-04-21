@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include "../include/struct.h"
+#include "../include/file.h"
+
+#define FILE_PATH "data/tasks.dat"
+
+// Function to write task to the data file
+void write_task(struct Task t) {
+  FILE *fp = fopen(FILE_PATH, "ab");
+
+  if (!fp) {
+    fprintf(stderr, "\nERROR: Cannot open the file...\n");
+    return;
+  }
+
+  fwrite(&t, sizeof(struct Task), 1, fp);
+  fclose(fp);
+}
+
+// Function to read all task from the data file
+void read_all_tasks() {
+  FILE *fp = fopen(FILE_PATH, "rb");
+
+  if (!fp) {
+    fprintf(stderr, "\nERROR: Cannot open the file...\n");
+    return;
+  }
+
+  struct Task t;
+
+  printf("\n------------------------------------\n");
+
+  while (fread(&t, sizeof(struct Task), 1, fp)) {
+    printf("ID: %d\nTitle: %s\nDescription: %s\nStatus: %s\n", t.id, t.title, t.description, t.completed ? "DONE" : "PENDING");
+    printf("------------------------------------\n");
+  }
+
+  fclose(fp);
+}
+
+// Function to update task in the data file
+void update_task(int id) {
+  FILE *fp = fopen(FILE_PATH, "rb+");
+
+  if (!fp) {
+    fprintf(stderr, "\nERROR: Cannot open the file...\n");
+    return;
+  }
+
+  struct Task t;
+
+  while (fread(&t, sizeof(struct Task), 1, fp)) {
+    if (t.id == id) {
+      t.completed = 1;
+
+      fseek(fp, -(long)sizeof(struct Task), SEEK_CUR);
+      fwrite(&t, sizeof(struct Task), 1, fp);
+
+      printf("\nTask marked as completed.\n");
+      fclose(fp);
+      return;
+    }
+  }
+
+  printf("\nTask not found...\n");
+  fclose(fp);
+}
+
+// Function to delete a specific task
+// By deleting the old file and replacing it with new one
+void delete_task_file(int id) {
+  FILE *fp = fopen(FILE_PATH, "rb");
+  FILE *temp = fopen("data/temp.dat", "wb");
+
+  if (!fp || !temp) {
+    fprintf(stderr, "ERROR: Cannot open the file...\n");
+    return;
+  }
+
+  struct Task t;
+  int found = 0;
+
+  while (fread(&t, sizeof(struct Task), 1, fp)) {
+    if (t.id != id) {
+      fwrite(&t, sizeof(struct Task), 1, temp);
+    } else {
+      found = 1;
+    }
+  }
+
+  fclose(fp);
+  fclose(temp);
+
+  remove(FILE_PATH);
+  rename("data/temp.dat", FILE_PATH);
+
+  if (found) {
+    printf("\nTask deleted successfully.\n");
+  } else {
+    printf("\nTask not found!\n");
+  }
+}
