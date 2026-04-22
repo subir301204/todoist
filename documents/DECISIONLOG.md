@@ -11,11 +11,17 @@ Here I will document why I took each decision
 - Update the exe file name to 'todo'
 - Create the utility user-define header
 - Create the usage function
+- I have decided to not use the sqlite db
+- I have choose to use .dat (Binary) file for data storage for the app
+- I have written a `struct.h` & `struct.c` files
+- I have created the `file.h` & `file.c` files
+- I have created the `task.h` & `task.c` files
+- I have created the `flags.` & `flags.c` files
 
 ### Why this decision?
 - **Why I have created a Makefile?**
   - I have created the Makefile to automate the building and testing process of the tool in the development process.
-- **Why I have created a seperated test script?**
+- **Why I have created a separated test script?**
   - I have created the test script for scalability.
   - I will scale the tool very large, so I need to test it on that stage.
   - So I make the test cases in a test script where I can add or edit them as much I want.
@@ -25,8 +31,37 @@ Here I will document why I took each decision
   - For a updated exe file, you have to just re-run the install command.
 - **Why I have updated the exe file name to 'todo'?**
   - As I have added the install command to the Makefile, So I can use it globally.
-  - So I have make a little easyer to use it by shorting it's name to 'todo'.
-- **Why I have created the userdefine header file?**
-  - I have created the utility header to create and maintain the userdefine functions to help in general task in the project.
+  - So I have make a little easy to use it by shorting it's name to 'todo'.
+- **Why I have created the user-define header file?**
+  - I have created the utility header to create and maintain the user-define functions to help in general task in the project.
 - **Why I have created the usage function?**
   - I have created the usage function to display the usage syntax of the tool to the user.
+- **Why I have decided to not use the sqlite DB?**
+  - First I have thought to use the sqlite3 db for the app data storage.
+  - But in WINDOWS there is no sqlite3.h or sqlite3.c file in the Mingw32\include folder!!!!
+  - So I tried to install them and also tried to create or copy them, But non of them works...
+  - So I have to through this idea out ant think about something else.
+- **Why I have choose to use .dat (Binary) file to store the data of the app?**
+  - I have discussed why I have through the idea of sqlite db.
+  - And now I have choose a .dat (Binary) file instead of a normal test file.
+  - The reason why the .dat (Binary) file is better:
+    - Faster read/write performance
+    - Compact storage
+    - Exact data representation 
+    - Structure data handling
+    - Better for large datasets
+- **Why I have created the `struct.h` & `struct.c` files?**
+  - As I have used a .dat (Binary) file for data storage of my app / tool.
+  - So I have to create a structure for the the data, and what properties the data (or every task) have.
+  - This will provide structure to every tasks.
+- **Why I have created the `file.h` & `file.c` files?**
+  - I have created those files to access the data-file and perform some operations directly to the data-file.
+  - The main function will not use this functions directly, there will be some connecting functions between them.
+- **Why I have created the `task.h` & `task.c` files?**
+  - I have created this files to declare some functions, that will use the functions from the `file.h` file.
+  - This file cannot access the data-file directly, it can update the data-file by using the functions from the `file.h` file.
+  - This will be the linker between the `main.c` and `file.h` files
+  - And this how the `main.c` can access the data-file.
+- **Why I have created the `flags.h` & `flags.c` files?**
+  - I have created this files to use the flags for the tool.
+  - This files contain flag structures and flag functions.
