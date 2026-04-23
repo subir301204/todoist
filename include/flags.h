@@ -16,6 +16,6 @@ typedef struct {
 void init_flags(Flags *flags);
 
 // Function to check which flag is being used and mark there value with 1
-int parse_flags(int argc, char *argv[], Flags *flags);
+void parse_flags(int argc, char *argv[], Flags *flags);
 
 #endif

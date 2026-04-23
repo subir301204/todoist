@@ -9,7 +9,7 @@ void init_flags(Flags *flags) {
   flags->delete_task = 0;
 }
 
-int parse_flags(int argc, char **argv, Flags *flags) {
+void parse_flags(int argc, char **argv, Flags *flags) {
   int i, j;
 
   for (i = 1; i < argc; i++) {
@@ -44,6 +44,4 @@ int parse_flags(int argc, char **argv, Flags *flags) {
       }
     }
   }
-
-  return i;
 }
