@@ -21,24 +21,16 @@ void add_tasks() {
   fgets(t.description, sizeof(t.description), stdin);
 
   // Remove the extra \n
-  for (i = 0; t.title[i] != '\0' && t.description[i] != '\0'; i++) {
+  for (i = 0; t.title[i] != '\0'; i++) {
     if (t.title[i] == '\n') {
       t.title[i] = '\0';
-
-      if (t.description[i] == '\n') {
-        t.description[i] = '\0';
-      }
-
       break;
     }
+  }
 
+  for (i = 0; t.description[i] != '\0'; i++) {
     if (t.description[i] == '\n') {
       t.description[i] = '\0';
-
-      if (t.title[i] == '\n') {
-        t.title[i] = '\0';
-      }
-
       break;
     }
   }

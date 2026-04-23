@@ -13,13 +13,18 @@ void write_task(struct Task t) {
     return;
   }
 
-  if (fwrite(&t, sizeof(struct Task), 1, fp) == 1) {
-    printf("\nNew task added!\n");
-  } else {
+  if (fwrite(&t, sizeof(struct Task), 1, fp) != 1) {
     fprintf(stderr, "\nERROR: Write operation failed!\n");
+    fclose(fp);
+    return;
   }
 
-  fclose(fp);
+  if (fclose(fp) != 0) {
+    fprintf(stderr, "\nERROR: Failed to close file properly!\n");
+    return;
+  }
+
+  printf("\nNew task added!\n");
 }
 
 // Function to read all task from the data file
