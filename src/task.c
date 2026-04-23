@@ -8,15 +8,40 @@
 // Function to add task with the help of file operations functions
 void add_tasks() {
   struct Task t;
+  int i;
 
   printf("Enter ID: ");
   scanf("%d", &t.id);
+  getchar();
 
   printf("Enter Title: ");
-  scanf("%[^\n]", t.title);
+  fgets(t.title, sizeof(t.title), stdin);
 
   printf("Enter description: ");
-  scanf("%[^\n]", t.description);
+  fgets(t.description, sizeof(t.description), stdin);
+
+  // Remove the extra \n
+  for (i = 0; t.title[i] != '\0' && t.description[i] != '\0'; i++) {
+    if (t.title[i] == '\n') {
+      t.title[i] = '\0';
+
+      if (t.description[i] == '\n') {
+        t.description[i] = '\0';
+      }
+
+      break;
+    }
+
+    if (t.description[i] == '\n') {
+      t.description[i] = '\0';
+
+      if (t.title[i] == '\n') {
+        t.title[i] = '\0';
+      }
+
+      break;
+    }
+  }
 
   t.completed = 0;
 
