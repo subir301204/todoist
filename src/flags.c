@@ -45,7 +45,7 @@ void parse_flags(int argc, char **argv, Flags *flags) {
           break;
 
           default:
-            printf("\nUnknown flag: -%c\n", argv[i][j]);
+            fprintf(stderr, "\nERROR: Unknown flag: -%c\n", argv[i][j]);
       }
     }
   }
