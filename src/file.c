@@ -13,7 +13,12 @@ void write_task(struct Task t) {
     return;
   }
 
-  fwrite(&t, sizeof(struct Task), 1, fp);
+  if (fwrite(&t, sizeof(struct Task), 1, fp) == 1) {
+    printf("\nNew task added!\n");
+  } else {
+    fprintf(stderr, "\nERROR: Write operation failed!\n");
+  }
+
   fclose(fp);
 }
 
