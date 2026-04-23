@@ -6,6 +6,7 @@ void init_flags(Flags *flags) {
   flags->create = 0;
   flags->mark_as_complete = 0;
   // flags->update = 0;
+  flags->list_tasks = 0;
   flags->delete_task = 0;
 }
 
@@ -34,6 +35,10 @@ void parse_flags(int argc, char **argv, Flags *flags) {
         // case 'u':
         //   flags->update = 1;
         //   break;
+
+        case 'l':
+          flags->list_tasks = 1;
+          break;
 
         case 'd':
           flags->delete_task = 1;

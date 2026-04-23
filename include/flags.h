@@ -9,6 +9,7 @@ typedef struct {
   int create;           // -c
   int mark_as_complete; // -x
   // int update;           // -u
+  int list_tasks;  // -l
   int delete_task; // -d
 } Flags;
 
