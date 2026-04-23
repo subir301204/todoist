@@ -30,5 +30,7 @@ void implement_operations(Flags *flags) {
     printf("\nEnter the task ID which have to be deleted: ");
     scanf("%d", &tempID);
     delete_task(tempID);
+  } else if (flags->help) {
+    usage();
   }
 }
