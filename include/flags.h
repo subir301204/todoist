@@ -8,8 +8,8 @@ typedef struct {
   int help;             // -h
   int create;           // -c
   int mark_as_complete; // -x
-  int update;           // -u
-  int delete_task;      // -d
+  // int update;           // -u
+  int delete_task; // -d
 } Flags;
 
 // Function to initialize the values of the flag structure variables
