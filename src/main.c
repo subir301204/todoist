@@ -3,12 +3,15 @@
  */
 
 // #include <stdio.h>
-#include "../include/utility.h"
+#include "../include/flags.h"
+// #include "../include/utility.h"
 
 int main(int argc, char *argv[]) {
-  if (argc == 1) {
-    usage();
-  }
+  Flags fg;
+
+  init_flags(&fg);
+  parse_flags(argc, argv, &fg);
+
 
   return 0;
 }
