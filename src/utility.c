@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <direct.h>
 
+char file_path[512];
+
 void usage() {
   printf("\nUSAGE: todo <necessary flags>\n");
   printf("\n----------------Available Flags----------------\n");
@@ -37,7 +39,7 @@ void implement_operations(Flags *flags) {
   }
 }
 
-void get_file_path(char *file_path, size_t size) {
+void init_file_path() {
   char *home = getenv("USERPROFILE");
 
   if (!home) {
@@ -50,5 +52,5 @@ void get_file_path(char *file_path, size_t size) {
 
   mkdir(dir);
 
-  snprintf(file_path, size, "%s\\tasks.dat", dir);
+  snprintf(file_path, sizeof(file_path), "%s\\tasks.dat", dir);
 }
