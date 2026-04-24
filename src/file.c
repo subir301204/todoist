@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include "../include/struct.h"
 #include "../include/file.h"
-
-#define FILE_PATH "data/tasks.dat"
+#include "../include/utility.h"
 
 // Function to write task to the data file
 void write_task(struct Task t) {
-  FILE *fp = fopen(FILE_PATH, "ab");
+  FILE *fp = fopen(file_path, "ab");
 
   if (!fp) {
     fprintf(stderr, "\nERROR: Cannot open the file...\n");
@@ -29,7 +28,7 @@ void write_task(struct Task t) {
 
 // Function to read all task from the data file
 void read_all_tasks() {
-  FILE *fp = fopen(FILE_PATH, "rb");
+  FILE *fp = fopen(file_path, "rb");
 
   if (!fp) {
     fprintf(stderr, "\nERROR: Cannot open the file...\n");
@@ -50,7 +49,7 @@ void read_all_tasks() {
 
 // Function to update task in the data file
 void update_task(int id) {
-  FILE *fp = fopen(FILE_PATH, "rb+");
+  FILE *fp = fopen(file_path, "rb+");
 
   if (!fp) {
     fprintf(stderr, "\nERROR: Cannot open the file...\n");
@@ -79,8 +78,12 @@ void update_task(int id) {
 // Function to delete a specific task
 // By deleting the old file and replacing it with new one
 void delete_task_file(int id) {
-  FILE *fp = fopen(FILE_PATH, "rb");
-  FILE *temp = fopen("data/temp.dat", "wb");
+  FILE *fp = fopen(file_path, "rb");
+
+  char temp_path[512];
+  snprintf(temp_path, sizeof(temp_path), "%s.tmp", file_path);
+
+  FILE *temp = fopen(temp_path, "wb");
 
   if (!fp || !temp) {
     fprintf(stderr, "ERROR: Cannot open the file...\n");
@@ -101,8 +104,8 @@ void delete_task_file(int id) {
   fclose(fp);
   fclose(temp);
 
-  remove(FILE_PATH);
-  rename("data/temp.dat", FILE_PATH);
+  remove(file_path);
+  rename(temp_path, file_path);
 
   if (found) {
     printf("\nTask deleted successfully.\n");
