@@ -17,6 +17,10 @@ Here I will document why I took each decision
 - I have created the `file.h` & `file.c` files
 - I have created the `task.h` & `task.c` files
 - I have created the `flags.` & `flags.c` files
+- I have added `implement_operations()` in the `utility` header and src
+- I have changed the string input method to` fgets()` for better error handling in the `write_task()` in the `file.c` file
+- I have added proper test cases for the program in the `tests.ps1` file
+- I have added a `init_file_path()` to the `utility` header and src
 
 ### Why this decision?
 - **Why I have created a Makefile?**
@@ -65,3 +69,16 @@ Here I will document why I took each decision
 - **Why I have created the `flags.h` & `flags.c` files?**
   - I have created this files to use the flags for the tool.
   - This files contain flag structures and flag functions.
+- **Why I have added the `implement_operations()` function in the `utility` header and src?**
+  - After creating the flags and a way of there identification, now we need to implement there operations.
+  - So I have created this function that will check for the flag used.
+  - There is a limitation: This function can handle only one flag at a time, and it uses basic if-else.
+- **Why I have changed the string input method to `fgets()` in the `write_task()` in the `file.c` function?**
+  - `fgets()` provides a better error message handling than `scanf()`.
+  - So I have changed the string input method.
+- **Why I have added proper test cases for the program in the `tests.ps1` file?**
+  - I have added proper test cases to `tests.ps1` file to test all possible flag input.
+- **Why I have added a `init_file_path()` to the `utility` header and src?**
+  - I have added this path function to get and create a global path in the (WINDOWS) system.
+  - Using this path we will store the data file (.dat / Binary).
+  - And this how we can use the tool globally in our system.
