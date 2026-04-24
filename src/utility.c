@@ -23,7 +23,7 @@ void implement_operations(Flags *flags) {
     add_tasks();
   } else if (flags->mark_as_complete) {
     int tempID;
-    printf("\nEnter the task ID which to be deleted: ");
+    printf("\nEnter the task ID which to be completed: ");
     scanf("%d", &tempID);
 
     mark_complete(tempID);
