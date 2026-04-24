@@ -2,6 +2,8 @@
 #include "../include/flags.h"
 #include "../include/task.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <direct.h>
 
 void usage() {
   printf("\nUSAGE: todo <necessary flags>\n");
@@ -33,4 +35,20 @@ void implement_operations(Flags *flags) {
   } else if (flags->help) {
     usage();
   }
+}
+
+void get_file_path(char *file_path, size_t size) {
+  char *home = getenv("USERPROFILE");
+
+  if (!home) {
+    fprintf(stderr, "ERROR: Cannot get USERPROFILE\n");
+    return;
+  }
+
+  char dir[512];
+  snprintf(dir, sizeof(dir), "%s\\AppData\\Local\\todo", home);
+
+  mkdir(dir);
+
+  snprintf(file_path, size, "%s\\tasks.dat", dir);
 }
