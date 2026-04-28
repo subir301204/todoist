@@ -14,7 +14,7 @@ void usage() {
   printf("x\t-\tMark task as complete\n");
   // printf("u\t-\tUpdate any task details\n");
   printf("d\t-\tDelete a  task\n");
-  printf("todo\t-\tTo get the usage message\n");
+  printf("h\t-\tTo get the usage message\n");
 }
 
 void implement_operations(Flags *flags) {
