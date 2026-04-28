@@ -37,7 +37,9 @@ void read_all_tasks() {
 
   struct Task t;
 
-  printf("\n------------------------------------\n");
+  if (!is_file_empty(file_path)) {
+    printf("\n------------------------------------\n");
+  }
 
   while (fread(&t, sizeof(struct Task), 1, fp)) {
     printf("ID: %d\nTitle: %s\nDescription: %s\nStatus: %s\n", t.id, t.title, t.description, t.completed ? "DONE" : "PENDING");
