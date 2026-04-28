@@ -113,3 +113,20 @@ void delete_task_file(int id) {
     printf("\nTask not found!\n");
   }
 }
+
+// Function to check is a file empty or not
+int is_file_empty(const char *file_path) {
+  long size;
+  FILE *fp = fopen(file_path, "rb");
+  if (fp == NULL) {
+    fprintf(stderr, "\nERROR: Cannot open the file...\n");
+    return -1;
+  }
+
+  fseek(fp, 0, SEEK_END);
+  size = ftell(fp);
+
+  fclose(fp);
+
+  return (size == 0);
+}
